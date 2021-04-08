@@ -1,0 +1,8 @@
+[server]
+[mysqld]
+[galera]
+port=8080
+bind-address=0.0.0.0
+[embedded]
+[mariadb]
+[mariadb-10.3]
