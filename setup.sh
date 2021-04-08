@@ -25,6 +25,17 @@ echo "change $MK4IP to MK4IP"
 sed -i '' "s/$MK4IP/MK4IP/g" srcs/nginx/image/default.conf
 echo 'nginx started 💪'
 
+
+#php mysql
+echo 'install mysql pma ..'
+echo "change MK4IP to $MK4IP"
+sed -i '' "s/MK4IP/$MK4IP/g" ./srcs/MySQL/image/wordpress.sql
+./srcs/MySQL/start.sh
+./srcs/phpMyAdmin/start.sh
+echo "change $MK4IP to MK4IP"
+sed -i '' "s/$MK4IP/MK4IP/g" ./srcs/MySQL/image/wordpress.sql
+echo 'mysql , pma installed'
+
 #Wordpress
 echo 'install wordpress ..'
 ./srcs/WordPress/start.sh
