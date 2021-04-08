@@ -1,2 +1,2 @@
-docker build -t wordpress ./image/
-kubectl apply -f wordpress.yaml
+docker build -t wordpress ./srcs/WordPress/image/
+kubectl apply -f ./srcs/WordPress/wordpress.yaml
