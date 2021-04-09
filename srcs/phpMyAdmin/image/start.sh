@@ -1,5 +1,5 @@
 openrc reboot
 service php-fpm7 start
 service nginx start
-/telegraf/telegraf &
+/telegraf*/usr/bin/telegraf &
 sh

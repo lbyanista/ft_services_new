@@ -1,0 +1,91 @@
+apiVersion: v1 # creating the real storage and add it to local-sc storag CLASS
+kind: PersistentVolume
+metadata:
+    name: ftps
+spec:
+    storageClassName: local-sc
+    capacity:
+        storage: 1Gi
+    accessModes:
+        - ReadWriteOnce
+    hostPath:
+        path: "~/42cursus/ft_services_new/srcs/FTPS"
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+    name: ftps-pvc
+spec:
+    storageClassName: local-sc
+    accessModes:
+        - ReadWriteOnce
+    resources:
+        requests:
+            storage: 1Gi
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: ftps
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: ftps-ptr
+    template:
+        metadata:
+            labels:
+                app: ftps-ptr
+        spec:
+            volumes:
+                - name: ftps-volume
+                  persistentVolumeClaim: 
+                    claimName: ftps-pvc
+            containers:
+              - name: ftps
+                image: ftps # name of image
+                imagePullPolicy: Never
+                livenessProbe:
+                    exec:
+                        command:
+                            - sh
+                            - ./lifserv.sh
+                    initialDelaySeconds: 10
+                    periodSeconds: 5
+                volumeMounts:
+                  - mountPath: "/home/mlabrayj/goinfre/"
+                    name: ftps-volume
+                ports:
+                    - containerPort: 21
+                    - containerPort: 20
+                    - containerPort: 30020
+                    - containerPort: 30021
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+      annotations:
+          metallb.universe.tf/allow-shared-ip: shared
+      name: ftps-service # name of ftps service
+      labels:
+        run: ftps-alpine
+spec:
+      type: LoadBalancer
+      ports:
+      - port: 21
+        targetPort: 21
+        name: ftp-ctl
+      - port: 20
+        targetPort: 20
+        name: ftp-data
+      - port: 30020
+        targetPort: 30020
+        name: ftp-r1
+      - port: 30021
+        targetPort: 30021
+        name: ftp-r2
+      selector:
+        app: ftps-ptr

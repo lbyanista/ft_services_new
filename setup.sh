@@ -45,3 +45,17 @@ echo 'WordPress installed 💪'
 echo 'install grafana ...'
 ./srcs/Grafana/start.sh
 echo 'grafana installed 💪'
+
+#install influxdb
+echo 'install InfluxDB ...'
+./srcs/InfluxDB/start.sh
+echo 'influxdb installed. 💪'
+
+#FTPS
+echo 'install ftps...'
+echo "change MK4IP to $MK4IP"
+sed -i '' "s/MK4IP/$MK4IP/g" ./srcs/FTPS/image/vsftpd.conf
+./srcs/FTPS/start.sh
+echo "change $MK4IP to MK4IP"
+sed -i '' "s/$MK4IP/MK4IP/g" ./srcs/FTPS/image/vsftpd.conf
+echo 'FTPS installed. 💪'
