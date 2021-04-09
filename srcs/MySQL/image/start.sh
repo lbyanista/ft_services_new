@@ -8,5 +8,5 @@ mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'mlabrayj'@'%';"
 mysql -e "FLUSH PRIVILEGES"
 mysql -e "./mlabrayj_db.sql -u mlabrayj"
 service mariadb restart
-/telegraf/telegraf &
+/telegraf*/usr/bin/telegraf &
 sh
