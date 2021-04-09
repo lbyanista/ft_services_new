@@ -24,4 +24,4 @@ COPY start.sh ./
 COPY lifserv.sh ./
 RUN chmod +x start.sh
 EXPOSE 5000
-./start.sh]
+CMD ./start.sh
