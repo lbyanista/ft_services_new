@@ -1,5 +1,5 @@
 openrc reboot
 service influxdb start
 chmod 777 /var/lib/influxdb/
-/telegraf/telegraf &
+/telegraf*/usr/bin/telegraf &
 sh
