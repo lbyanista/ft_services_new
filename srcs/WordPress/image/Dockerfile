@@ -5,18 +5,14 @@ RUN apk add php7-common php7-iconv php7-json php7-gd  php7-curl php7-xml php7-my
 RUN wget https://wordpress.org/latest.tar.gz
 RUN tar -zxvf latest.tar.gz
 RUN rm latest.tar.gz
-#COPY wp-config.php /wordpress/
+COPY wp-config.php /wordpress/
 RUN rm /etc/nginx/conf.d/default.conf
 COPY default.conf /etc/nginx/conf.d
 RUN mkdir /etc/telegraf
 COPY telegraf.conf /etc/telegraf/
-RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.18.1_static_linux_amd64.tar.gz
-RUN tar xf telegraf-1.18.1_static_linux_amd64.tar.gz
-RUN rm telegraf-1.18.1_static_linux_amd64.tar.gz
-RUN mv telegraf*/ telegraf
-#RUN mv telegraf/* /etc/telegraf/
-#COPY telegraf.conf /
-#RUN mv telegraf.conf /etc/telegraf/
+RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.14.0-static_linux_amd64.tar.gz
+RUN tar xf telegraf-1.14.0-static_linux_amd64.tar.gz
+RUN rm telegraf-1.14.0-static_linux_amd64.tar.gz
 RUN chmod +x telegraf/*
 COPY start.sh ./
 COPY lifserv.sh ./

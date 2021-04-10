@@ -4,5 +4,5 @@ adduser -D mlabrayj
 echo 'mlabrayj:password' | chpasswd
 touch /home/mlabrayj/my-test.txt
 service vsftpd start
-/telegraf/usr/bin/telegraf &
+/telegraf/telegraf &
 sh

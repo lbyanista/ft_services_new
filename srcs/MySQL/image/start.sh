@@ -6,7 +6,7 @@ mysql -e "CREATE DATABASE wordpress;"
 mysql < ./wordpress.sql -u root wordpress; 
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'mlabrayj'@'%';"
 mysql -e "FLUSH PRIVILEGES"
-mysql -e "./mlabrayj_db.sql -u mlabrayj"
+#mysql -e "./mlabrayj_db.sql -u mlabrayj"
 service mariadb restart
-/telegraf*/usr/bin/telegraf &
+/telegraf/telegraf &
 sh
