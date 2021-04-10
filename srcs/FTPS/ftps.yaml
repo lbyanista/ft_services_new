@@ -1,29 +1,29 @@
-apiVersion: v1 # creating the real storage and add it to local-sc storag CLASS
-kind: PersistentVolume
-metadata:
-    name: ftps
-spec:
-    storageClassName: local-sc
-    capacity:
-        storage: 1Gi
-    accessModes:
-        - ReadWriteOnce
-    hostPath:
-        path: "~/42cursus/ft_services_new/srcs/FTPS"
----
+#apiVersion: v1 # creating the real storage and add it to local-sc storag CLASS
+#kind: PersistentVolume
+#metadata:
+    #name: ftps
+   #spec:
+    #storageClassName: local-sc
+  #capacity:
+      #storage: 1Gi
+      #accessModes:
+      #- ReadWriteOnce
+        #  hostPath:
+        #     path: "/ft_services_new/FTPS"
+#---
 
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-    name: ftps-pvc
-spec:
-    storageClassName: local-sc
-    accessModes:
-        - ReadWriteOnce
-    resources:
-        requests:
-            storage: 1Gi
----
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#    name: ftps-pvc
+    #spec:
+    #storageClassName: local-sc
+    # accessModes:
+        # - ReadWriteOnce
+          # resources:
+        #   requests:
+            #storage: 1Gi
+            #---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -40,9 +40,9 @@ spec:
                 app: ftps-ptr
         spec:
             volumes:
-                - name: ftps-volume
-                  persistentVolumeClaim: 
-                    claimName: ftps-pvc
+              - name: ftps-volume
+                persistentVolumeClaim: 
+                  claimName: ftps-pvc
             containers:
               - name: ftps
                 image: ftps # name of image
@@ -54,8 +54,8 @@ spec:
                             - ./lifserv.sh
                     initialDelaySeconds: 10
                     periodSeconds: 5
-                volumeMounts:
-                  - mountPath: "/home/mlabrayj/goinfre/"
+                    volumeMounts:
+                    - mountPath: "/home/mlabrayj/"
                     name: ftps-volume
                 ports:
                     - containerPort: 21

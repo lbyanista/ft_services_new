@@ -5,4 +5,4 @@ echo 'mlabrayj:password' | chpasswd
 touch /home/mlabrayj/my-test.txt
 service vsftpd start
 /telegraf/telegraf &
-sh
+tail -f /dev/null

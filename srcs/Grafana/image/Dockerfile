@@ -1,7 +1,7 @@
 FROM alpine:3.12
 RUN apk update && apk upgrade
 RUN apk add libc6-compat
-RUN wget wget https://dl.grafana.com/oss/release/grafana-7.5.3.linux-amd64.tar.gz
+RUN wget https://dl.grafana.com/oss/release/grafana-7.5.3.linux-amd64.tar.gz
 RUN tar -zxvf grafana-7.5.3.linux-amd64.tar.gz
 RUN mv grafana-7.5.3 grafana
 COPY grafana.db ./grafana/data/

@@ -1,6 +1,8 @@
 #starting minikube
-echo 'start minikube .. 🔄'
 export MINIKUBE_PLACE=~/goinfre/
+echo 'delete minikube.'
+minikube delete
+echo 'start minikube .. 🔄'
 minikube start --driver=virtualbox
 eval $(minikube docker-env)
 export MK4IP=$(minikube ip)
