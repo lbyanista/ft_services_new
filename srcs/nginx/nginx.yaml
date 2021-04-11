@@ -23,13 +23,10 @@ spec:
                             - ./lifserv.sh
                     initialDelaySeconds: 10
                     periodSeconds: 5
-                    ports:
+                  ports:
                       - containerPort: 80
-                      - containerPort: 443 # for ssl
+                      - containerPort: 443 #for ssl
                       - containerPort: 22 #ssh port
-                  
-
-
 ---
 apiVersion: v1
 kind: Service

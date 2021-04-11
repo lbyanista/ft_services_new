@@ -43,7 +43,7 @@ spec:
             volumes:
               - name: ftps-volume
                 persistentVolumeClaim: 
-                  claimName: ftps-pvc
+                  # claimName: ftps-pvc
             containers:
               - name: ftps
                 image: ftps # name of image
@@ -72,7 +72,7 @@ metadata:
           metallb.universe.tf/allow-shared-ip: shared
       name: ftps-service # name of ftps service
       labels:
-        run: ftps-alpine
+        # run: ftps-alpine
 spec:
       type: LoadBalancer
       ports:
