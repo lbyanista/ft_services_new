@@ -4,7 +4,7 @@ then
 elif [[ $(ps | grep -v "grep" | grep -c "telegraf") == 0 ]]
 then
         exit 1
-elif [[ $(ps | grep -v "grep" | grep -c "php-fpm") == 0 ]]
+elif [[ $(ps | grep -v "grep" | grep -c "sshd") == 0 ]]
 then
 		exit 1
 else
