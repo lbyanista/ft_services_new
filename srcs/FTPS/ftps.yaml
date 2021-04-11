@@ -12,18 +12,19 @@
         #     path: "/ft_services_new/FTPS"
 #---
 
-#apiVersion: v1
-#kind: PersistentVolumeClaim
-#metadata:
-#    name: ftps-pvc
-    #spec:
-    #storageClassName: local-sc
-    # accessModes:
-        # - ReadWriteOnce
-          # resources:
-        #   requests:
-            #storage: 1Gi
-            #---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#     name: ftps-pvc
+# spec:
+#     storageClassName: local-sc
+#     accessModes:
+#           - ReadWriteOnce
+#     resources:
+#         requests:
+#             storage: 1Gi
+
+# ---
 
 apiVersion: apps/v1
 kind: Deployment
@@ -54,8 +55,8 @@ spec:
                             - ./lifserv.sh
                     initialDelaySeconds: 10
                     periodSeconds: 5
-                    volumeMounts:
-                    - mountPath: "/home/mlabrayj/"
+                volumeMounts:
+                  - mountPath: "/home/mlabrayj/"
                     name: ftps-volume
                 ports:
                     - containerPort: 21
