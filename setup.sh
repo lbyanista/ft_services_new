@@ -6,10 +6,11 @@ echo 'start minikube .. 🔄'
 minikube start --driver=virtualbox
 eval $(minikube docker-env)
 export MK4IP=192.168.99.250
+echo "======= $MK4IP ======="
 echo 'minikube started ✅'
 
 
-# #metallb
+#metallb
 echo 'install metallb ...'
 echo "change MK4IP to $MK4IP on config.yaml"
 sed -i '' "s/MK4IP/$MK4IP/g" srcs/metallb/config.yaml
