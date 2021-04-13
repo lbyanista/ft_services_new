@@ -13,5 +13,5 @@ $cfg['Servers'][$i]['auth_type'] = 'cookie';
 $cfg['Servers'][$i]['host'] = "mysql-service"; // refrancing mysql service 
 
 $cfg['Servers'][$i]['compress'] = false; 
-$cfg['Servers'][$i]['port'] = "8888"; //mysql service port
+$cfg['Servers'][$i]['port'] = "3306"; //mysql service port
 $cfg['Servers'][$i]['AllowNoPassword'] = false;

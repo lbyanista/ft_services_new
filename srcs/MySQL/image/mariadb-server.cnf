@@ -1,7 +1,7 @@
 [server]
 [mysqld]
 [galera]
-port=8080
+port=3306
 bind-address=0.0.0.0
 [embedded]
 [mariadb]
