@@ -5,7 +5,7 @@ RUN apk add openrc mariadb mariadb-common mariadb-client
 RUN rm /etc/my.cnf.d/mariadb-server.cnf
 COPY mariadb-server.cnf /etc/my.cnf.d/
 COPY wordpress.sql ./
-COPY mlabrayj_db.sql ./
+COPY phpmyadmin.sql ./
 RUN mkdir /etc/telegraf
 COPY telegraf.conf /etc/telegraf/
 RUN wget https://dl.influxdata.com/telegraf/releases/telegraf-1.14.0-static_linux_amd64.tar.gz
