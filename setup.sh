@@ -23,7 +23,9 @@ echo 'metallb istalled. 💪'
 echo 'install nginx ..🕸️'
 echo "change MK4IP to $MK4IP"
 sed -i '' "s/MK4IP/$MK4IP/g" srcs/nginx/image/default.conf
-./srcs/nginx/start.sh
+# ./srcs/nginx/start.sh
+docker build -t nginx ./srcs/nginx/image/
+kubectl apply -f ./srcs/nginx/nginx.yaml
 echo "change $MK4IP to MK4IP"
 sed -i '' "s/$MK4IP/MK4IP/g" srcs/nginx/image/default.conf
 echo 'nginx installed & started 💪'
@@ -33,32 +35,44 @@ echo 'nginx installed & started 💪'
 echo 'install mysql pma ..'
 echo "change MK4IP to $MK4IP"
 sed -i '' "s/MK4IP/$MK4IP/g" ./srcs/MySQL/image/wordpress.sql
-./srcs/MySQL/start.sh
-./srcs/phpMyAdmin/start.sh
+# ./srcs/MySQL/start.sh
+docker build -t mysql ./srcs/MySQL/image/
+kubectl apply -f ./srcs/MySQL/mysql.yaml
+# ./srcs/phpMyAdmin/start.sh
+docker build -t phpmyadmin ./srcs/phpMyAdmin/image/
+kubectl apply -f ./srcs/phpMyAdmin/phpmyadmin.yaml
 echo "change $MK4IP to MK4IP"
 sed -i '' "s/$MK4IP/MK4IP/g" ./srcs/MySQL/image/wordpress.sql
 echo 'mysql , pma installed 💪'
 
 #Wordpress
 echo 'install wordpress ..'
-./srcs/WordPress/start.sh
+# ./srcs/WordPress/start.sh
+docker build -t wordpress ./srcs/WordPress/image/
+kubectl apply -f ./srcs/WordPress/wordpress.yaml
 echo 'WordPress installed 💪'
 
 #install grafana
 echo 'install grafana ...'
-./srcs/Grafana/start.sh
+# ./srcs/Grafana/start.sh
+docker build -t grafana ./srcs/Grafana/image/
+kubectl apply -f ./srcs/Grafana/grafana.yaml
 echo 'grafana installed 💪'
 
 #install influxdb
 echo 'install InfluxDB ...'
-./srcs/InfluxDB/start.sh
+# ./srcs/InfluxDB/start.sh
+docker build -t influxdb ./srcs/InfluxDB/image/
+kubectl apply -f ./srcs/InfluxDB/influxdb.yaml
 echo 'influxdb installed. 💪'
 
 #FTPS
 echo 'install ftps...'
 echo "change MK4IP to $MK4IP"
 sed -i '' "s/MK4IP/$MK4IP/g" ./srcs/FTPS/image/vsftpd.conf
-./srcs/FTPS/start.sh
+# ./srcs/FTPS/start.sh
+docker build -t ftps ./srcs/FTPS/image/
+kubectl apply -f ./srcs/FTPS/ftps.yaml
 echo "change $MK4IP to MK4IP"
 sed -i '' "s/$MK4IP/MK4IP/g" ./srcs/FTPS/image/vsftpd.conf
 echo 'FTPS installed. 💪'
