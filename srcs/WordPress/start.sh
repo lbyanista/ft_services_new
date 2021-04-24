@@ -1,2 +1,6 @@
-docker build -t wordpress ./srcs/WordPress/image/
-kubectl apply -f ./srcs/WordPress/wordpress.yaml
+apk update && apk upgrade
+openrc reboot
+rc-service php-fpm7 start
+rc-service nginx start
+/telegraf/telegraf &
+tail -f /dev/null

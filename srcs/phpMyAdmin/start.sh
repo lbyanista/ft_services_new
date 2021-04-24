@@ -1,2 +1,5 @@
-docker build -t phpmyadmin ./srcs/phpMyAdmin/image/
-kubectl apply -f ./srcs/phpMyAdmin/phpmyadmin.yaml
+openrc reboot
+service php-fpm7 start
+service nginx start
+/telegraf/telegraf &
+tail -f /dev/null

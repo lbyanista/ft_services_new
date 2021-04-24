@@ -1,2 +1,5 @@
-docker build -t influxdb ./srcs/InfluxDB/image/
-kubectl apply -f ./srcs/InfluxDB/influxdb.yaml
+openrc reboot
+service influxdb start
+chmod 777 /var/lib/influxdb/
+/telegraf/telegraf &
+tail -f /dev/null 
