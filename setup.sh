@@ -54,7 +54,7 @@ kubectl apply -f ./srcs/Grafana/grafana.yaml
 echo 'grafana installed 💪'
 
 #install influxdb
-echo 'install InfluxDB ...'
+echo 'install Influxdb ...'
 docker build -t influxdb ./srcs/InfluxDB/
 kubectl apply -f ./srcs/InfluxDB/influxdb.yaml
 echo 'influxdb installed. 💪'
@@ -68,3 +68,7 @@ kubectl apply -f ./srcs/FTPS/ftps.yaml
 echo "change $MK4IP to MK4IP"
 sed -i '' "s/$MK4IP/MK4IP/g" ./srcs/FTPS/vsftpd.conf
 echo 'FTPS installed. 💪'
+
+#start dashboard
+echo 'Start Minikube Dashboard'
+minikube dashboard &
